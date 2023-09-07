@@ -1,8 +1,152 @@
+# Criando projeto NEXTJS 13 e TYPESCRIPT
+
+## Estou estudando NextJS e quero compartilhar uma de exemplo **configuração** de projeto.
+
+<hr>
+
+### Link
+
+[https://nextjs.org/docs](https://nextjs.org/docs)
+
+```jsx
+npx create-next-app@latest
+```
+
+Entrar na pasta do projeto ```cd nome-projeto```
+
+```jsx
+cd "nome-do-projeto"
+npx eslint --init
+```
+
+Instalar Plugins
+
+[](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
+
+`yarn add eslint-plugin-react-hooks --dev`
+
+No arquivo .eslintrc.json  acrescentar o plugins - `"react-hooks"` e também as regras.
+
+```
+{
+  "plugins": [
+    // ...
+    "react-hooks"
+  ],
+  "rules": {
+    // ...
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
+```
+
+Acrescentar configuração no .eslintrc.json 
+
+```json
+"settings": {
+        "react":{
+            "version": "detect"
+        }
+    },
+```
+
+
+[Instalar o Prettier](https://prettier.io/docs/en/install)
+
+```jsx
+yarn add --dev --exact prettier
+```
+
+Criar arquivo .prettierrc e colocar as configurações
+
+```json
+{
+    "trailingComma": "none", 
+    "semi": true,
+    "singleQuote": true
+}
+```
+
+Fazendo integração do Eslint com o Prettier
+
+```jsx
+yarn add --dev eslint-config-prettier
+yarn add --dev eslint-plugin-prettier
+```
+
+Passar as configurações no .prettier no extends
+
+```json
+"extends": [
+      //...
+				"eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
+```
+
+```json
+"rules": {
+        // ...
+    
+        "prettier/prettier": "error"
+    }
+```
+
+Criar o arquivo .vscode/setting.json com as linhas abaixo
+
+```json
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
+```
+
+Instalar o plugin `eslint-plugin-import-helpers`
+
+```jsx
+yarn add --dev eslint-plugin-import-helpers
+```
+
+Passar o plugin
+
+```jsx
+"plugins": [
+						//...
+
+						 "eslint-plugin-import-helpers"
+],
+```
+
+Adicionar a configuração abaixo no  .eslintrc.json
+
+```jsx
+{// Configuração dos imports
+                "newlinesBetween": "always",
+                "groups": [
+                    ["/^react/", "/^next/", "/@next/"],
+                    "/components/",
+                    "module",
+                    "/^@shared/",
+                    "/absolute/",
+                    ["parent", "sibling", "index"]
+                ],
+                "alphabetize": { "order": "asc", "ignoreCase": true }
+            }
+```
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Para rodar o projeto.
+Primeiro, execute o servidor de desenvolvimento.
 
-First, run the development server:
 
 ```bash
 npm run dev
@@ -12,23 +156,8 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra o projeto no link [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este projeto usa [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) 
+para otimizar e carregar automaticamente o INTER, uma fonte personalizada do Google.
